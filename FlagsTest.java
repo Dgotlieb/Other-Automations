@@ -1,0 +1,28 @@
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class FlagsTest {
+    private static WebDriver driver;
+
+    @BeforeClass
+    public static void beforeClass() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\dgotl\\Downloads\\chromedriver\\chromedriver.exe");
+        driver = new ChromeDriver(new ChromeOptions().addArguments("--headless"));
+//        driver = new ChromeDriver(new ChromeOptions().addArguments("--lang=ru"));
+        driver.get("https://translate.google.com");
+    }
+
+    @Test
+    public void testPrintGoogleTranslateWindowHandle(){
+        System.out.println("Window handle for Google Translate : " + driver.getWindowHandle());
+    }
+
+    @AfterClass
+    public static void afterClass() {
+        driver.quit();
+    }
+}
